@@ -13,6 +13,7 @@ Here's a full example of what you might do:
     mkdir mytheme
     cd mytheme
     git clone https://github.com/rc1/WordpressJadeBuildsystem.git src
+    cd src
     npm install
     gulp default watch
 
