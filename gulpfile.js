@@ -139,7 +139,7 @@ gulp.task( 'js', function () {
 // Less
 // ----
 gulp.task( 'less', function () {
-    return gulp.src( 'assets/less/all.less' )
+    return gulp.src( 'less/all.less' )
         .pipe( plumber() )
         .pipe( gulpif( USE_CSS_SOURCEMAPS, sourcemaps.init()))
         .pipe( less() )
