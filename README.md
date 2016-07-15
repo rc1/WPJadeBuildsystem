@@ -33,9 +33,11 @@ Anything in the `./copy` folder will be copied into the parent theme folder.
 
 ### Jade
 
+__*To use [jadephp](https://www.npmjs.com/package/gulp-jade-php) and  output `.php` instead of `.html` files the jade filename must end in `.php.jade`*__
+
+
 All `.jade` files in `./jade` except for any files in `./jade/includes` will be compiled and placed into the parent theme folder. 
 
-__To use [jadephp](https://www.npmjs.com/package/gulp-jade-php) and  output `.php` instead of `.html` files the jade filename must end in `.php.jade`__
 
 ### Less
 
