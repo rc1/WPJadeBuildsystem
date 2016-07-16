@@ -1,11 +1,11 @@
 # Jade/Less/BrowserSync/Babel WordPress Theme Buildsystem
 
-A buildsystem for creating a WordPress theme using [gulp](http://gulpjs.com), [jade](http://jadelang), [less](http://lesscss.org), [browsersync](https://www.browsersync.io/), [babel](https://babeljs.io/) and a few other javascript lovelies. 
+A buildsystem for creating a WordPress theme using [gulp](http://gulpjs.com), [jade](http://jadelang), [less](http://lesscss.org), [browsersync](https://www.browsersync.io/), [babel](https://babeljs.io/) and a few other javascript lovelies.
 
 This repo is not a theme.  
 It's a buildsystem to make a theme.
 
-To create a new theme from scratch, like any other new theme, first create a folder in `wp-content/themes`. Then clone this repo into your new folder as a sub folder. 
+To create a new theme from scratch, like any other new theme, first create a folder in `wp-content/themes`. Then clone this repo into your new folder as a sub folder.
 
 Here's a full example of what you might do:
 
@@ -21,7 +21,7 @@ Here's a full example of what you might do:
 # Keyfiles
 
 - __Theme Meta__ - `copy/style.css`
-- __Theme Config__ - `copy/functions.php`
+- __Theme Config & PHP Utilities__ - `copy/functions.php`
 
 ## Buildsystem
 
@@ -29,14 +29,16 @@ Here is how the `gulpfile.js` is currently setup. The idea is that no built file
 
 ### Copy
 
-Anything in the `./copy` folder will be copied into the parent theme folder. 
+Anything in the `./copy` folder will be copied into the parent theme folder.
 
 ### Jade
 
 __*To use [jadephp](https://www.npmjs.com/package/gulp-jade-php) and  output `.php` instead of `.html` files the jade filename must end in `.php.jade`*__
 
 
-All `.jade` files in `./jade` except for any files in `./jade/includes` will be compiled and placed into the parent theme folder. 
+All `.jade` files in `./jade` except for any files in `./jade/includes` will be compiled and placed into the parent theme folder.
+
+There is some stub theme components in there already. It assumes that `index.php.jade` is a router. Only suitable for small sites.
 
 
 ### Less
@@ -57,8 +59,5 @@ Gulp can be run by using:
 
 
     $ ./script-gulp.sh
-    
+
 This will pull configuration settings from `gulp-config-local.env`. Useful for having different build settings. See `gulpfile.js` for more info.
-
-
-
