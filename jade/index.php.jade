@@ -1,4 +1,19 @@
-extends includes/layout.php.jade
+//- Index.php like a router
+//- =====================
 
-block body-content
-    h1 Hello Index
+- if ( is_front_page () ):
+    include includes/home.php.jade
+
+- elseif ( post_password_required() ):
+    include includes/password-entry-page.php.jade
+   
+- elseif ( is_singular( 'my-custom-post-type' ) ): 
+    include includes/my-custom-post-type.php.jade
+
+- elseif ( is_404() ):
+    include includes/404.php.jade
+- else:
+    include includes/404.php.jade
+
+- endif
+    

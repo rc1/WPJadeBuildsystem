@@ -1,0 +1,34 @@
+extends layout.php.jade
+
+block body-content
+
+    h1 This is My Custom Post type page which has ACF Flexible Content
+    
+    #my-custom-post-type-page( class!= get_field( "type" ) )
+    
+        - if ( have_rows( 'text_blocks' ) ):
+    
+            .popup-items
+            
+                - while ( have_rows( 'text_blocks' ) ): the_row();
+                 
+                    - if ( get_row_layout() === 'text_two_columns' ):
+                    
+                        .popup-item.popup-item-two-columns
+                            .two-columns.primary!= the_sub_field( 'primary_column' )
+                            .two-columns.secondary!= the_sub_field( 'secondary_column' )
+                    
+                    - elseif ( get_row_layout() === 'text_single_column' ): 
+                    
+                        .popup-item.popup-item-single-column!= the_sub_field( 'text' )
+                    
+                    - elseif ( get_row_layout() === 'text_large_centered' ): 
+                    
+                        .popup-item.popup-item-large-centered!= the_sub_field( 'text' )
+                    
+                    - endif;
+                 
+                - endwhile;
+                 
+        - endif;
+                 

@@ -10,6 +10,7 @@ html
     - wp_head();
     
   body( class!= join( ' ', get_body_class() ) )
+    include navigation.php.jade
     block body-content
     - wp_footer();
     
