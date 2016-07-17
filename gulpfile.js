@@ -77,8 +77,8 @@ var USE_CSS_SOURCEMAPS = !!process.env.USE_CSS_SOURCEMAPS;
 // BrowserSync
 // -----------
 var USE_BROWSER_SYNC = !!process.env.USE_BROWSER_SYNC;
-var BROWSER_SYNC_PORT = parseInt( useIfDefined( process.env.BROWSER_SYNC_PORT ).or( 8080 ), 10 );
-var BROWSER_SYNC_PROXY_ON_PORT = parseInt( useIfDefined( process.env.BROWSER_SYNC_PROXY_ON_PORT ).or( 8081 ), 10 );
+var BROWSER_SYNC_PORT = parseInt( useIfDefined( process.env.BROWSER_SYNC_PORT ).or( 80 ), 10 );
+var BROWSER_SYNC_PROXY_ON_PORT = parseInt( useIfDefined( process.env.BROWSER_SYNC_PROXY_ON_PORT ).or( 8080 ), 10 );
 
 // Tasks
 // ======
