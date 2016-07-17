@@ -6,8 +6,10 @@ div: a( href=get_site_url() )!= get_bloginfo( 'name' );
 //- Any pages added to the Header Menu
 - $menuitems = wp_get_nav_menu_items( 'header-menu', array( 'order' => 'DESC' ) );
 ul
-    - foreach ( $menuitems as $item ):
-        //- phpjade note: we can only pass a variable or call function in the arribute. Property accessors don't work.Things get complicated
-        - $url = $item->url;
-        li: a(href= esc_url( $url ) )= $item->title;
-    - endforeach;
+    - if ( $menuitems ):
+        - foreach ( $menuitems as $item ):
+            //- phpjade note: we can only pass a variable or call function in the arribute. Property accessors don't work.Things get complicated
+            - $url = $item->url;
+            li: a(href= esc_url( $url ) )= $item->title;
+        - endforeach;
+    - endif;
