@@ -1,8 +1,25 @@
 <?php
 
-// Add a Navigation Menu
-// =====================
-// This can be set using the theme customize feature
+// Theme
+// =====
+
+// Title Tag
+// ---------
+// WordPress will add the title tag
+
+function add_title_tag_support () {
+   add_theme_support( 'title-tag' );
+}
+
+add_action( 'after_setup_theme', 'add_title_tag_support' );
+
+
+// Admin Bar
+// =========
+
+// Theme Navigation Menu
+// ---------------------
+// Set via the Admin Bar the customize theme button
 function register_my_menus() {
     register_nav_menus(
         array( 'header-menu' => __( 'Header Menu' ) )
@@ -11,27 +28,10 @@ function register_my_menus() {
 
 add_action( 'init', 'register_my_menus' );
 
-// Let wordpress set the page Title
-// ================================
-
-function add_title_tag_support () {
-   add_theme_support( 'title-tag' );
-}
-
-add_action( 'after_setup_theme', 'add_title_tag_support' );
-
-// Allow BrowserSync
-// =================
-// Prevent port redirections
-
-remove_filter( 'template_redirect', 'redirect_canonical');
-
-// Remove the customise link
-// =========================
+// Admin Bar Links
+// ===============
 function remove_admin_bar_links () {
-
     global $wp_admin_bar;
-
     // List them all
     // $all_toolbar_nodes = $wp_admin_bar->get_nodes();
     // foreach ( $all_toolbar_nodes as $node ) {
@@ -46,8 +46,20 @@ function remove_admin_bar_links () {
 
 add_action( 'wp_before_admin_bar_render', 'remove_admin_bar_links' );
 
-// Custom Fields WYSIWYG Toolbars
-// ==============================
+
+// BrowserSync
+// ===========
+
+// Prevent port redirections
+remove_filter( 'template_redirect', 'redirect_canonical');
+
+
+// Backend Interface
+// =================
+
+// Custom WYSIWYG Toolbars
+// -----------------------
+// In Advanced Custom Fields
 // See: https://www.advancedcustomfields.com/resources/customize-the-wysiwyg-toolbars/
 
 add_filter( 'acf/fields/wysiwyg/toolbars' , 'my_toolbars'  );
