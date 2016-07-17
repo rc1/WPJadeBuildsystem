@@ -28,7 +28,7 @@ function register_my_menus() {
 add_action( 'init', 'register_my_menus' );
 
 // Admin Bar Links
-// ===============
+//
 function remove_admin_bar_links () {
     global $wp_admin_bar;
     // List them all
@@ -51,8 +51,40 @@ add_action( 'wp_before_admin_bar_render', 'remove_admin_bar_links' );
 // Prevent port redirections
 remove_filter( 'template_redirect', 'redirect_canonical');
 
-// Backend Interface
-// =================
+// Admin Interface
+// ===============
+
+// Add Custom Column
+// -----------------
+// See: http://www.codetorials.com/wordpress/add-custom-column-with-acf-field-to-posts-and-pages-admin-screen/
+// Note this won't work for pages. That needs a different API. See: https://codex.wordpress.org/Plugin_API/Action_Reference/manage_posts_custom_column
+
+// ### Register the column
+function add_new_posts_admin_column( $column ) {
+    $column[ 'my-custom-acf-field'] = 'My custom ACF field';
+    return $column;
+}
+
+add_filter( 'manage_posts_columns', 'add_new_posts_admin_column' );
+
+// ### Provide the value to a cell
+function add_new_posts_admin_column_show_value( $column_name ) {
+    // if ($column_name == 'my-custom-acf-field') {
+    //     echo get_field('my-custom-acf-field');
+    // }
+    echo "BOOM!";
+}
+
+add_action( 'manage_posts_custom_column', 'add_new_posts_admin_column_show_value', 10, 2 );
+
+### Make it sortable column_name
+function add_new_posts_admin_columns_make_sortable( $columns )
+{
+    $columns[ 'my-custom-acf-field' ] = 'my-custom-acf-field';
+    return $columns;
+}
+
+add_filter( "manage_edit-post_sortable_columns", "add_new_posts_admin_columns_make_sortable" );
 
 // Custom WYSIWYG Toolbars
 // -----------------------
