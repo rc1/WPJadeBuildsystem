@@ -179,7 +179,7 @@ gulp.task('watch', function () {
         .on( 'change', browserSync.reload );
     gulp.watch( 'less/**/*.less', [ 'less' ] )
         .on( 'change', browserSync.reload );
-    gulp.watch( 'less/**/*', [ 'copy' ] )
+    gulp.watch( 'copy/**/*', [ 'copy' ] )
         .on( 'change', browserSync.reload );
 });
 
