@@ -13,7 +13,6 @@ function add_title_tag_support () {
 
 add_action( 'after_setup_theme', 'add_title_tag_support' );
 
-
 // Admin Bar
 // =========
 
@@ -46,13 +45,11 @@ function remove_admin_bar_links () {
 
 add_action( 'wp_before_admin_bar_render', 'remove_admin_bar_links' );
 
-
 // BrowserSync
 // ===========
 
 // Prevent port redirections
 remove_filter( 'template_redirect', 'redirect_canonical');
-
 
 // Backend Interface
 // =================
@@ -75,7 +72,7 @@ function my_toolbars ( $toolbars ) {
 
     // Add a new toolbar type
     $toolbars[ 'Example Toolbar A' ] = array();
-    $toolbars[ 'Example Toolbar A' ][1] = array( 'link' , 'italic' , 'spellchecker', 'fullscreen', 'removeformat' );
+    $toolbars[ 'Example Toolbar A' ][ 1 ] = array( 'link' , 'italic' , 'spellchecker', 'fullscreen', 'removeformat' );
 
     return $toolbars;
 }
