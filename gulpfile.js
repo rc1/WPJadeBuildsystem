@@ -37,9 +37,9 @@ var uglify = require( 'gulp-uglify' );
 // Keep this generic so it can copy/pasted to other projects/contexts.
 //
 // ### Example
-// 
+//
 // Create an file called `gulp-config-local.env` containing:
-// 
+//
 //     export DESTINATION="./.." \
 //         USE_JADE_PRETTY=1 \
 //         USE_JS_SOURCEMAPS=1 \
@@ -51,7 +51,7 @@ var uglify = require( 'gulp-uglify' );
 // A file called `script-gulp.sh`
 //
 //     #!/bin/bash
-//     
+//
 //     . gulp-config-local.env
 //     gulp "$@"
 //
@@ -86,6 +86,11 @@ var BROWSER_SYNC_PROXY_ON_PORT = parseInt( useIfDefined( process.env.BROWSER_SYN
 // Default
 // -------
 gulp.task( 'default', [ 'jade', 'jade-php', 'less', 'js', 'js-concat', 'copy' ] );
+
+// Start
+// -----
+gulp.task( 'start', [ 'default', 'watch' ] );
+
 
 // Jade
 // ----
